@@ -17,6 +17,6 @@ jobs:
       - name: Setting up "IMG" And Starting Proxmox..
         run: |
           sudo qemu-img create -f qcow2 /mnt/a.img 127G
-          sudo wget https://unlimited.dl.sourceforge.net/project/blissos-x86/Official/BlissOS14/OpenGApps/Generic/Bliss-v14.10.2-x86_64-OFFICIAL-opengapps-20240603.iso?viasf=1
+          sudo wget https://unlimited.dl.sourceforge.net/project/android-x86/Release%209.0/android-x86_64-9.0-r2.iso
           sudo websockify --web /usr/share/novnc/ --wrap-mode=ignore 6080 localhost:5900 &
-          sudo qemu-system-x86_64 -machine q35 -m 12G -cpu host -smp 3 -hda /mnt/a.img -cdrom Bliss-v14.10.2-x86_64-OFFICIAL-opengapps-20240603.iso -vga virtio -vnc :0 -accel kvm
+          sudo qemu-system-x86_64 -machine q35 -m 12G -cpu host -smp 3 -hda /mnt/a.img -cdrom android-x86_64-9.0-r2.iso -vga virtio -vnc :0 -accel kvm
