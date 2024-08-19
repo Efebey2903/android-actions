@@ -18,7 +18,7 @@ jobs:
         run: |
           sudo mkdir /mnt/img
           sudo qemu-img create -f qcow2 /mnt/img/a.img 127G
-          sudo aria2c -s16 -x16 https://enterprise.proxmox.com/iso/proxmox-ve_8.2-1.iso
+          sudo wget -O proxmox.iso https://tinyurl.com/isoforvmachine
           mv proxmox-ve_8.2-1.iso proxmox.iso
           sudo websockify --web /usr/share/novnc/ --wrap-mode=ignore 6080 localhost:5900 &
           sudo qemu-system-x86_64 -machine q35 -m 12G -cpu host -smp 3 -hda /mnt/img/a.img -cdrom proxmox.iso -vga virtio -vnc :0 -accel kvm
