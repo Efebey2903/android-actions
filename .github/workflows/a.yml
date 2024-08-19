@@ -11,13 +11,13 @@ jobs:
       - name: Getting Updates and Installing Tailscale, QEMU.
         run: |
           sudo apt update -y
-          sudo apt install git wget qemu-kvm websockify novnc tigervnc-standalone-server -y
+          sudo apt install git wget aria2 qemu-kvm websockify novnc tigervnc-standalone-server -y
           curl -fsSL https://tailscale.com/install.sh | sh
           sudo tailscale up
       - name: Setting up "IMG" And Starting Proxmox..
         run: |
           sudo mkdir /mnt/img
           sudo qemu-img create -f qcow2 /mnt/img/a.img 127G
-          sudo nohup wget -O proxmox.iso https://enterprise.proxmox.com/iso/proxmox-ve_8.2-1.iso
+          sudo aria2c -s16 -x16 https://enterprise.proxmox.com/iso/proxmox-ve_8.2-1.iso
           sudo websockify --web /usr/share/novnc/ --wrap-mode=ignore 6080 localhost:5900 &
           sudo qemu-system-x86_64 -machine q35 -m 12G -cpu host -smp 3 -hda /mnt/img/a.img -cdrom proxmox.iso -vga virtio -vnc :0 -accel kvm
