@@ -11,7 +11,7 @@ jobs:
       - name: Getting Updates and Installing Tailscale, QEMU.
         run: |
           sudo apt update -y
-          sudo apt install git wget qemu-kvm -y
+          sudo apt install git wget qemu-kvm websockify novnc tigervnc-standalone-server -y
           curl -fsSL https://tailscale.com/install.sh | sh
           sudo tailscale up
       - name: Setting up "IMG" And Starting Proxmox..
