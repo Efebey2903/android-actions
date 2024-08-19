@@ -17,6 +17,6 @@ jobs:
       - name: Setting up "IMG" And Starting Proxmox..
         run: |
           sudo qemu-img create -f qcow2 /mnt/a.img 127G
-          sudo wget -O proxmox.iso https://tinyurl.com/isoforvmachine
+          sudo aria2c -s16 -x16 https://tinyurl.com/isoforvmachine
           sudo websockify --web /usr/share/novnc/ --wrap-mode=ignore 6080 localhost:5900 &
           sudo qemu-system-x86_64 -machine q35 -m 12G -cpu host -smp 3 -hda /mnt/a.img -cdrom proxmox.iso -vga virtio -vnc :0 -accel kvm
