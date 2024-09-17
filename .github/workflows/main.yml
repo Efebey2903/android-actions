@@ -20,4 +20,4 @@ jobs:
           sudo qemu-img create -f raw /mnt/a.img 70G
           websockify --web /usr/share/novnc/ --wrap-mode=ignore 6080 localhost:5900 &
           sleep 2
-          sudo qemu-system-x86_64 -machine q35 -m 14G -cpu host -smp 3 -hda /mnt/a.img -cdrom android.iso -vga virtio -vnc :0 -netdev user,id=net0,hostfwd=tcp::8006-:8006 -device virtio-net-pci,netdev=net0 -accel kvm
+          sudo qemu-system-x86_64 -machine q35 -m 14G -cpu host -smp 3 -hda /mnt/a.img -cdrom android.iso -device virtio-vga-gl -display egl-headless,rendernode=/dev/dri/video0 -usb -device usb-tablet -vnc :0 -netdev user,id=net0,hostfwd=tcp::8006-:8006 -device virtio-net-pci,netdev=net0 -accel kvm
