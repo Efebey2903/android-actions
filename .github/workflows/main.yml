@@ -10,6 +10,7 @@ jobs:
 
       - name: Getting Updates and Installing Tailscale, QEMU.
         run: |
+          dir /dev/dri/
           sudo apt update -y
           sudo apt install aria2 qemu-kvm websockify novnc tigervnc-standalone-server -y
           sudo curl -fsSL https://tailscale.com/install.sh | sh
