@@ -1,3 +1,3 @@
 #!/bin/sh
 startlxde &
-qemu-system-x86_64 -machine q35 -m 14G -cpu host -smp cores=3 -drive file=/mnt/a.img,if=virtio -cdrom android.iso -device virtio-vga-gl -display egl-headless,rendernode=/dev/dri/card0 -usb -device usb-tablet -vnc :0 -netdev user,id=net0,hostfwd=tcp::5555-:5555 -device virtio-net-pci,netdev=net0 -accel kvm
+qemu-system-x86_64 -machine q35 -m 14G -cpu host -smp cores=3 -drive file=/mnt/a.img,if=virtio -cdrom /home/runner/work/android-tailscale/android-tailscale/android.iso -device virtio-vga-gl -display egl-headless,rendernode=/dev/dri/card0 -usb -device usb-tablet -vnc :0 -netdev user,id=net0,hostfwd=tcp::5555-:5555 -device virtio-net-pci,netdev=net0 -accel kvm
