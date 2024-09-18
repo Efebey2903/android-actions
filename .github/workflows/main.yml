@@ -12,7 +12,7 @@ jobs:
         run: |
           dir /dev/dri/
           sudo apt update -y
-          sudo apt install aria2 wget lxde qemu-kvm websockify novnc tightvncserver -y
+          sudo apt install aria2 wget lxde qemu-kvm websockify novnc tigervnc-standalone-server -y
           sudo mkdir /root/.vnc
           sudo wget -O /root/.vnc/xstartup https://raw.githubusercontent.com/Efebey2903/android-tailscale/main/xstartup
           sudo curl -fsSL https://tailscale.com/install.sh | sh
