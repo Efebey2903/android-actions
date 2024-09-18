@@ -13,12 +13,12 @@ jobs:
           dir /dev/dri/
           sudo apt update -y
           sudo apt install aria2 wget lxde qemu-kvm websockify novnc tightvncserver -y
+          sudo wget -O /root/.vnc/xstartup https://raw.githubusercontent.com/Efebey2903/android-tailscale/main/xstartup
           sudo curl -fsSL https://tailscale.com/install.sh | sh
           sudo tailscale up --ssh
       - name: Making Android and Setting Everything Up.
         run: |
           sudo aria2c -s16 -x16 -o android.iso https://pixeldrain.com/api/file/BTwiJpGj?download
-          sudo wget -O /root/.vnc/xstartup https://raw.githubusercontent.com/Efebey2903/android-tailscale/main/xstartup
           sudo qemu-img create -f raw /mnt/a.img 70G
           websockify --web /usr/share/novnc/ --wrap-mode=ignore 6080 localhost:5900 &
           sleep 2
