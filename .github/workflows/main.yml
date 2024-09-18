@@ -23,6 +23,6 @@ jobs:
           sudo qemu-img create -f raw /mnt/a.img 70G
           websockify --web /usr/share/novnc/ --wrap-mode=ignore 6080 localhost:5900 &
           sleep 2
-          sudo vncserver
+          sudo vncserver -SecurityTypes None
           sleep 99999999
           
